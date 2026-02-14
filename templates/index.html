@@ -15,17 +15,35 @@
             // Инициализация WebApp
             const tg = window.Telegram.WebApp;
 
+            require('dotenv').config();
+
+            const token = process.env.BOT_TOKEN;
+
             // Развернуть приложение на весь экран (опционально)
             tg.expand();
 
             // Получить данные пользователя
             const user = tg.initDataUnsafe.user;
             console.log(user);
+            
+            const theme = {
+            bg_color: '#212121',
+            text_color: '#ffffff',
+            hint_color: '#aaaaaa',
+            link_color: '#8774e1',
+            button_color: '#8774e1',
+            button_text_color: '#ffffff',
+            secondary_bg_color: '#0f0f0f',
+            };             
 
-            // Пример использования главной кнопки (Main Button)
-            tg.MainButton.text = "Закрыть приложение";
-            tg.MainButton.show();
-            tg.MainButton.onClick(() => tg.close());
+            tg.MainButton.setParams({
+            text: 'Отправить',
+            color: '#4CAF50',
+            text_color: '#FFFFFF',
+            is_active: true,
+            });
+
+            tg.MainButton.onClick(() => {tg.sendData('Данные для отправки ${user.first_name}');});
 
         </script>
 
