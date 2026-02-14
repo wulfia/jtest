@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    </head>
+    <body>
+
+        <div>
+            <h1 style="font-family: sans-serif, 'Inter';" align="center">test</h1>
+        </div>
+
+
+        <script>
+
+            // Инициализация WebApp
+            const tg = window.Telegram.WebApp;
+
+            // Развернуть приложение на весь экран (опционально)
+            tg.expand();
+
+            // Получить данные пользователя
+            const user = tg.initDataUnsafe.user;
+            console.log(user);
+
+            // Пример использования главной кнопки (Main Button)
+            tg.MainButton.text = "Закрыть приложение";
+            tg.MainButton.show();
+            tg.MainButton.onClick(() => tg.close());
+
+        </script>
+
+    </body>
+</html>
